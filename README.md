@@ -31,6 +31,21 @@ verified against jetdb's fixtures, since the Jackcess corpus contains none.
 Remaining gaps — embedded macros, object properties, blob thresholds — are
 listed in [`docs/development-plan.md`](docs/development-plan.md).
 
+## Install
+
+A Debian package for Ubuntu/Debian (including WSL):
+
+```sh
+cargo install cargo-deb      # once
+cargo deb                    # -> target/debian/raccess_<version>_amd64.deb
+sudo dpkg -i target/debian/raccess_0.1.0-1_amd64.deb
+```
+
+~1.1MB packaged, 3.4MB installed, binary at `/usr/bin/raccess`. The only
+runtime dependencies are `libc6 (>= 2.34)` and `libgcc-s1`, both already
+present on Ubuntu 22.04 and later. Docs land in
+`/usr/share/doc/raccess/`. Remove with `sudo dpkg -r raccess`.
+
 ## Build
 
 ```sh

@@ -24,4 +24,28 @@ chrono = { version = "0.4", default-features = false, features = ["clock", "std"
 env_logger = "0.11"
 
 [profile.release]
-debug = 1
+# Shipped binary: no debug info, ~3MB rather than ~28MB. Use the dev profile
+# (plain `cargo build`) when you want symbols and backtraces.
+strip = "symbols"
+
+[package.metadata.deb]
+maintainer = "Steve Homer <steve.homer@gmail.com>"
+copyright = "2026, Steve Homer. Apache-2.0."
+license-file = ["LICENSE", "0"]
+section = "database"
+priority = "optional"
+# $auto misses libgcc-s1, which the binary does link against.
+depends = "$auto, libgcc-s1"
+extended-description = """
+raccess reads a Microsoft Access database (.mdb or .accdb, Access 97 through
+2019) and writes a directory of plain, diffable files: CSV per table, JSON for
+the schema, queries, forms, reports and macros, and text for VBA modules.
+A manifest records what was extracted and what failed.
+.
+Read-only, and needs neither Access, ODBC nor a JVM."""
+assets = [
+    ["target/release/raccess", "usr/bin/", "755"],
+    ["README.md", "usr/share/doc/raccess/", "644"],
+    ["NOTICE", "usr/share/doc/raccess/", "644"],
+    ["docs/*.md", "usr/share/doc/raccess/docs/", "644"],
+]
