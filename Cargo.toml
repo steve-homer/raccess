@@ -1,0 +1,27 @@
+[package]
+name = "raccess"
+description = "Extract data, schema, queries, forms, macros and VBA from Microsoft Access databases"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+license = "Apache-2.0"
+authors = ["Steve Homer <steve.homer@gmail.com>"]
+
+[[bin]]
+name = "raccess"
+path = "src/main.rs"
+
+[dependencies]
+# Pinned to a revision, not 0.3.3: the published crate has no CSV writer and no
+# macro support at all. Switch to a version once upstream releases these.
+jetdb = { git = "https://github.com/dominion525/jetdb", rev = "615b8df31fc3777fb1e2ff9efbb8b2683cbcb211" }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+env_logger = "0.11"
+
+[profile.release]
+debug = 1

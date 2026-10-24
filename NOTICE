@@ -1,0 +1,18 @@
+raccess
+Copyright 2026 Steve Homer
+
+Licensed under the Apache License, Version 2.0. See LICENSE.
+
+This product depends on jetdb (https://github.com/dominion525/jetdb), which
+reads the Microsoft Access file format and is licensed under MIT OR
+Apache-2.0. raccess does not copy jetdb's source; it uses it as a library.
+
+The test corpus in fixtures/jackcess/ consists of the test databases from
+Jackcess (https://github.com/jahlborn/jackcess), Copyright 2005 Health Market
+Science, Inc. and contributors, licensed under the Apache License, Version 2.0.
+It is fetched by scripts/fetch-fixtures.sh rather than distributed here, and
+carries its own LICENSE.txt and NOTICE.txt when present.
+
+Jackcess source was consulted as format documentation while planning this
+project; the file format constants it documents are recorded in
+docs/prior-art.md. No Jackcess code is reproduced in raccess.

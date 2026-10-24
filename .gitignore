@@ -1,0 +1,11 @@
+/target
+**/*.rs.bk
+*.pdb
+
+# Local test corpora are large and often not redistributable.
+/fixtures/private/
+/out/
+
+# Vendored Jackcess corpus (~81MB); run ./scripts/fetch-fixtures.sh
+/fixtures/jackcess/
+/fixtures/jetdb/
